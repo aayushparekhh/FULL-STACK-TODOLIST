@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/css/tdl.css" />
+    <!--
+        google fonts cdn
+    -->
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,200;0,300;0,400;0,500;1,200;1,300;1,400&display=swap"
+      rel="stylesheet"
+    />
+    <!--
+      javascript animation library
+    -->
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+    <link
+      rel="stylesheet"
+      href="https://use.fontawesome.com/releases/v5.15.1/css/all.css"
+      integrity="sha384-vp86vTRFVJgpjF9jiIGPEEqYqlDwgyBgEF109VFjmqGmIY/Y4HV4d3Gp2irVfcrp"
+      crossorigin="anonymous"
+    />
+    <title>tasks</title>
+  </head>
+  <body>
+    <h1 id="heading">tasks for <span id="datetime"></span></h1>
+
+    <div class="task-container">
+      <div class="input-area">
+        <form action="/" method="POST">
+          <div class="dis-con">
+            <label for="description">Description</label>
+            <input
+              type="text"
+              placeholder="what do you need to do?"
+              name="description"
+              id="description"
+              autofocus
+              autocomplete="off"
+            />
+          </div>
+          <div class="more-details-container">
+            <div class="Category">
+              <label for="type">Category</label>
+              <select name="Category" id="type">
+                <option value="Work" name="Work">Work</option>
+                <option value="Academics" name="Academics">Academics</option>
+                <option value="Personal" name="Personal">Personal</option>
+                <option value="other" name="other">other</option>
+              </select>
+            </div>
+            <div class="due-date">
+              <label for="due-date">due date:</label>
+              <input type="date" id="due-date" name="due_date" />
+            </div>
+          </div>
+          <div class="btns">
+            <button type="submit" id="add-btn">Add</button>
+            <button type="submit" id="rm-btn">Clear All</button>
+          </div>
+        </form>
+      </div>
+      <!--ejs loop here to iterate over tasks from databse-->
+      <% for (let i of newTasks) { %>
+      <div class="rendered-tasks">
+        <div class="text-side">
+          <form action="/delete-task/<%= i._id %>  " method="GET">
+            <button>Done</button>
+            <label for="task"> <%= i.description %></label>
+          </form>
+          <p><%= i.due_date %></p>
+        </div>
+        <div class="btn-cat">
+          <button><%= i.category %></button>
+        </div>
+      </div>
+      <% } %>
+    </div>
+    <script>
+      /*
+        javascript here to disply current date and day
+    */
+      var dt = new Date();
+      document.getElementById("datetime").innerHTML = dt.toLocaleDateString();
+    </script>
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <script>
+      AOS.init();
+    </script>
+  </body>
+</html>
