@@ -26,7 +26,6 @@
   </head>
   <body>
     <h1 id="heading">tasks for <span id="datetime"></span></h1>
-
     <div class="task-container">
       <div class="input-area">
         <form action="/" method="POST">
@@ -58,7 +57,6 @@
           </div>
           <div class="btns">
             <button type="submit" id="add-btn">Add</button>
-            <button type="submit" id="rm-btn">Clear All</button>
           </div>
         </form>
       </div>
@@ -67,7 +65,7 @@
       <div class="rendered-tasks">
         <div class="text-side">
           <form action="/delete-task/<%= i._id %>  " method="GET">
-            <button>Done</button>
+            <button id="del-btn">Done</button>
             <label for="task"> <%= i.description %></label>
           </form>
           <p><%= i.due_date %></p>

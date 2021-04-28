@@ -31,7 +31,8 @@ body {
   box-shadow: 0 0 1rem 0 rgba(0, 0, 0, 0.2);
   background-color: rgba(255, 255, 255, 0.15);
   backdrop-filter: blur(5px);
-  overflow: scroll;
+  overflow: hidden;
+  overflow-y: scroll;
 }
 #description {
   width: 100%;
@@ -156,4 +157,13 @@ button:focus {
   text-transform: uppercase;
   border: 0px solid transparent;
   border-radius: 30px;
+}
+#del-btn {
+  height: 30px;
+  width: 50px;
+  background-color: white;
+  border: 0px solid transparent;
+  border-radius: 30px;
+  font-weight: bolder;
+  text-transform: uppercase;
 }
